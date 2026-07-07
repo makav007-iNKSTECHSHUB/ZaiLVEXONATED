@@ -6,113 +6,141 @@
     <title>ZAILVEXONATED // Fine Art Archive</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-black text-zinc-100 font-sans selection:bg-zinc-800 selection:text-white min-h-screen">
+<body class="bg-black text-zinc-100 font-sans selection:bg-zinc-800 selection:text-white min-h-screen flex flex-col justify-between">
 
-    <!-- Premium Minimalist Header -->
-    <header class="border-b border-zinc-900 px-6 py-8 flex justify-between items-center max-w-7xl mx-auto">
-        <h1 class="text-2xl font-black tracking-widest text-white">ZAILVEXONATED</h1>
-        <nav class="space-x-6 text-xs tracking-widest text-zinc-400 uppercase flex items-center">
-            <span class="text-white">Galleries</span>
-            <a href="https://x.com/ZaiLVEXONATED" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-1">
-                <span>X / Twitter</span>
-                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <span class="opacity-30 cursor-not-allowed">About</span>
-        </nav>
-    </header>
+    <div>
+        <!-- Premium Minimalist Header -->
+        <header class="border-b border-zinc-900 px-6 py-8 flex justify-between items-center max-w-7xl mx-auto w-full">
+            <h1 class="text-2xl font-black tracking-widest text-white">ZAILVEXONATED</h1>
+            <nav class="space-x-6 text-xs tracking-widest text-zinc-400 uppercase flex items-center">
+                <span class="text-white cursor-pointer">Galleries</span>
+                <a href="https://x.com/ZaiLVEXONATED" target="_blank" rel="me noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-1">
+                    <span>X / Twitter</span>
+                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <span class="opacity-30 cursor-not-allowed">About</span>
+            </nav>
+        </header>
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-6 py-12">
-        <div class="max-w-2xl mb-16">
-            <p class="text-xs text-zinc-500 uppercase tracking-widest mb-3">// HIGH-END FINE ART PORTAL</p>
-            <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-6">
-                Editorial Collections & Cinematic Studies
-            </h2>
-            <p class="text-zinc-400 text-lg leading-relaxed">
-                Explore uncompromised photographic archives. Public presentation sets are accessible below. Premium expansion series require validation access.
-            </p>
-        </div>
-
-        <!-- The Content Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-            
-            <!-- Gallery 1: FREE -->
-            <div class="border border-zinc-900 bg-zinc-950 p-4 transition-all duration-300 hover:border-zinc-800 group relative">
-                <div class="aspect-[3/4] w-full overflow-hidden bg-zinc-900 mb-4 grayscale transition-all duration-500 group-hover:grayscale-0">
-                    <img src="photo1.jpg" alt="Collection Alessia" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy">
-                </div>
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h3 class="font-semibold text-white tracking-wide">Collection Alessia</h3>
-                        <p class="text-xs text-zinc-500">12 High-Res Frames</p>
-                    </div>
-                    <span class="text-xs font-mono text-emerald-400 bg-emerald-950/30 border border-emerald-900/50 px-2 py-1 uppercase tracking-wider">Free Access</span>
-                </div>
-                <button onclick="alert('TRAFFIC_VALIDATION: Opening Alessia public collection.')" class="w-full bg-zinc-100 text-black text-xs font-bold tracking-widest uppercase py-3 transition-colors hover:bg-white">
-                    View Gallery
-                </button>
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto px-6 py-12 w-full">
+            <div class="max-w-2xl mb-16">
+                <p class="text-xs text-zinc-500 uppercase tracking-widest mb-3">// HIGH-END FINE ART PORTAL</p>
+                <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-6">
+                    Editorial Collections & Cinematic Studies
+                </h2>
+                <p class="text-zinc-400 text-lg leading-relaxed">
+                    Explore uncompromised photographic archives. Public presentation sets are accessible below. Premium expansion series require validation access.
+                </p>
             </div>
 
-            <!-- Gallery 2: LOCKED -->
-            <div class="border border-zinc-900 bg-zinc-950 p-4 transition-all duration-300 hover:border-zinc-800 group relative">
-                <div class="aspect-[3/4] w-full overflow-hidden bg-zinc-900 mb-4 grayscale opacity-40 relative">
-                    <img src="photo2.jpg" alt="Collection Tatyana" class="w-full h-full object-cover object-center" loading="lazy">
-                    <!-- Lock Overlay -->
-                    <div class="absolute inset-0 flex items-center justify-center bg-black/60">
-                        <span class="text-3xl">🔒</span>
+            <!-- Pre-made Curated Collections -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                
+                <!-- Gallery 1: FREE -->
+                <div class="border border-zinc-900 bg-zinc-950 p-4 transition-all duration-300 hover:border-zinc-800 group relative">
+                    <div class="aspect-[3/4] w-full overflow-hidden bg-zinc-900 mb-4 grayscale transition-all duration-500 group-hover:grayscale-0">
+                        <img src="photo1.jpg" alt="Collection Alessia" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy">
                     </div>
-                </div>
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h3 class="font-semibold text-zinc-400 tracking-wide">Collection Tatyana (Premium)</h3>
-                        <p class="text-xs text-zinc-600">48 Ultra-Res Masters</p>
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-semibold text-white tracking-wide">Collection Alessia</h3>
+                            <p class="text-xs text-zinc-500">12 High-Res Frames</p>
+                        </div>
+                        <span class="text-xs font-mono text-emerald-400 bg-emerald-950/30 border border-emerald-900/50 px-2 py-1 uppercase tracking-wider">Free Access</span>
                     </div>
-                    <span class="text-xs font-mono text-amber-500 bg-amber-950/30 border border-amber-900/50 px-2 py-1 uppercase tracking-wider">Locked</span>
+                    <button onclick="alert('TRAFFIC_VALIDATION: Opening Alessia public collection.')" class="w-full bg-zinc-100 text-black text-xs font-bold tracking-widest uppercase py-3 transition-colors hover:bg-white">
+                        View Gallery
+                    </button>
                 </div>
-                <button onclick="alert('TRAFFIC_VALIDATION: Premium conversion intent tracked for Tatyana.')" class="w-full bg-zinc-900 text-zinc-400 text-xs font-bold tracking-widest uppercase py-3 border border-zinc-800 transition-colors hover:bg-zinc-800 hover:text-white">
-                    Unlock Premium Series
-                </button>
+
+                <!-- Gallery 2: LOCKED -->
+                <div class="border border-zinc-900 bg-zinc-950 p-4 transition-all duration-300 hover:border-zinc-800 group relative">
+                    <div class="aspect-[3/4] w-full overflow-hidden bg-zinc-900 mb-4 grayscale opacity-40 relative">
+                        <img src="photo2.jpg" alt="Collection Tatyana" class="w-full h-full object-cover object-center" loading="lazy">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/60">
+                            <span class="text-3xl">🔒</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-semibold text-zinc-400 tracking-wide">Collection Tatyana (Premium)</h3>
+                            <p class="text-xs text-zinc-600">48 Ultra-Res Masters</p>
+                        </div>
+                        <span class="text-xs font-mono text-amber-500 bg-amber-950/30 border border-amber-900/50 px-2 py-1 uppercase tracking-wider">Locked</span>
+                    </div>
+                    <button onclick="alert('TRAFFIC_VALIDATION: Premium conversion intent tracked for Tatyana.')" class="w-full bg-zinc-900 text-zinc-400 text-xs font-bold tracking-widest uppercase py-3 border border-zinc-800 transition-colors hover:bg-zinc-800 hover:text-white">
+                        Unlock Premium Series
+                    </button>
+                </div>
+
+                <!-- Gallery 3: LOCKED -->
+                <div class="border border-zinc-900 bg-zinc-950 p-4 transition-all duration-300 hover:border-zinc-800 group relative">
+                    <div class="aspect-[3/4] w-full overflow-hidden bg-zinc-900 mb-4 grayscale opacity-40 relative">
+                        <img src="photo3.jpg" alt="Collection Daria" class="w-full h-full object-cover object-center" loading="lazy">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/60">
+                            <span class="text-3xl">🔒</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-semibold text-zinc-400 tracking-wide">Collection Daria (Premium)</h3>
+                            <p class="text-xs text-zinc-600">36 Ultra-Res Masters</p>
+                        </div>
+                        <span class="text-xs font-mono text-amber-500 bg-amber-950/30 border border-amber-900/50 px-2 py-1 uppercase tracking-wider">Locked</span>
+                    </div>
+                    <button onclick="alert('TRAFFIC_VALIDATION: Premium conversion intent tracked for Daria.')" class="w-full bg-zinc-900 text-zinc-400 text-xs font-bold tracking-widest uppercase py-3 border border-zinc-800 transition-colors hover:bg-zinc-800 hover:text-white">
+                        Unlock Premium Series
+                    </button>
+                </div>
+
             </div>
 
-            <!-- Gallery 3: LOCKED -->
-            <div class="border border-zinc-900 bg-zinc-950 p-4 transition-all duration-300 hover:border-zinc-800 group relative">
-                <div class="aspect-[3/4] w-full overflow-hidden bg-zinc-900 mb-4 grayscale opacity-40 relative">
-                    <img src="photo3.jpg" alt="Collection Daria" class="w-full h-full object-cover object-center" loading="lazy">
-                    <!-- Lock Overlay -->
-                    <div class="absolute inset-0 flex items-center justify-center bg-black/60">
-                        <span class="text-3xl">🔒</span>
-                    </div>
-                </div>
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h3 class="font-semibold text-zinc-400 tracking-wide">Collection Daria (Premium)</h3>
-                        <p class="text-xs text-zinc-600">36 Ultra-Res Masters</p>
-                    </div>
-                    <span class="text-xs font-mono text-amber-500 bg-amber-950/30 border border-amber-900/50 px-2 py-1 uppercase tracking-wider">Locked</span>
-                </div>
-                <button onclick="alert('TRAFFIC_VALIDATION: Premium conversion intent tracked for Daria.')" class="w-full bg-zinc-900 text-zinc-400 text-xs font-bold tracking-widest uppercase py-3 border border-zinc-800 transition-colors hover:bg-zinc-800 hover:text-white">
-                    Unlock Premium Series
-                </button>
+            <!-- Divider Label for the Infinite Flow -->
+            <div class="border-t border-zinc-900 pt-12 mb-8">
+                <p class="text-xs text-zinc-500 uppercase tracking-widest">// METART-STYLE INFINITE INSTANT STREAM</p>
             </div>
 
-        </div>
+            <!-- Pure Tailwind Infinite Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 auto-rows-auto">
+                
+                <!-- Image Card 1 -->
+                <div class="relative rounded-lg overflow-hidden bg-zinc-950 border border-zinc-900 shadow-2xl transition-transform duration-300 hover:-translate-y-1 group">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1200" alt="Archive Image 1" class="w-full h-auto block object-cover">
+                    <a href="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=2400" download class="absolute bottom-0 left-0 right-0 bg-black/80 text-white text-center py-3 text-xs font-bold tracking-widest uppercase opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:bg-white hover:text-black">
+                        Download High-Res
+                    </a>
+                </div>
 
-        <!-- Membership/Access Notification Block -->
-        <section class="border border-zinc-900 bg-zinc-950 p-8 max-w-xl mx-auto text-center">
-            <h3 class="text-xl font-bold text-white mb-2">Request Archive Vault Access</h3>
-            <p class="text-xs text-zinc-400 mb-6">Enter your email to receive direct unlock credentials when new collections go live.</p>
-            <form onsubmit="event.preventDefault(); alert('TRAFFIC_VALIDATION: Vault list submission tracked.')" class="space-y-4">
-                <input type="email" required placeholder="Enter secure contact email" class="w-full bg-black border border-zinc-800 px-4 py-3 text-sm text-white focus:outline-none focus:border-zinc-500 transition-colors">
-                <button type="submit" class="w-full bg-zinc-100 text-black text-xs font-bold tracking-widest uppercase py-3 font-bold transition-colors hover:bg-white">
-                    Join Access Queue
-                </button>
-            </form>
-        </section>
-    </main>
+                <!-- Image Card 2 -->
+                <div class="relative rounded-lg overflow-hidden bg-zinc-950 border border-zinc-900 shadow-2xl transition-transform duration-300 hover:-translate-y-1 group">
+                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1200" alt="Archive Image 2" class="w-full h-auto block object-cover">
+                    <a href="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=2400" download class="absolute bottom-0 left-0 right-0 bg-black/80 text-white text-center py-3 text-xs font-bold tracking-widest uppercase opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:bg-white hover:text-black">
+                        Download High-Res
+                    </a>
+                </div>
 
-            <footer>
-            <p>© 2026 ZaiLVEXONATED studio </p>
-            <a href="https://x.com/ZaiLVEXONATED" rel="me" target="_blank" style="display: block; margin-top: 10px; font-size: 0.9rem; opacity: 0.8; color: inherit;">X Profile</a>
-        </footer>
+                <!-- Image Card 3 -->
+                <div class="relative rounded-lg overflow-hidden bg-zinc-950 border border-zinc-900 shadow-2xl transition-transform duration-300 hover:-translate-y-1 group">
+                    <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1200" alt="Archive Image 3" class="w-full h-auto block object-cover">
+                    <a href="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2400" download class="absolute bottom-0 left-0 right-0 bg-black/80 text-white text-center py-3 text-xs font-bold tracking-widest uppercase opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:bg-white hover:text-black">
+                        Download High-Res
+                    </a>
+                </div>
+
+                <!-- [PASTE FUTURE IMAGE CARDS DIRECTLY HERE] -->
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Centered Minimalist SEO Footer -->
+    <footer class="text-center py-12 px-6 border-t border-zinc-900 mt-20 w-full bg-black">
+        <p class="text-zinc-500 text-xs tracking-wider uppercase font-semibold">© 2026 ZaiLVEXONATED studio</p>
+        <a href="https://x.com/ZaiLVEXONATED" rel="me" target="_blank" class="inline-block mt-3 text-xs text-zinc-400 tracking-widest uppercase hover:text-white transition-colors border border-zinc-800 px-4 py-2 bg-zinc-950 hover:bg-zinc-900">
+            Verify Index Link // X Profile
+        </a>
+    </footer>
+
 </body>
 </html>
