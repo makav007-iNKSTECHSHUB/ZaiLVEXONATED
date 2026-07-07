@@ -3,34 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZaiLVEXONATED // Content Manager</title>
+  <title>ZaiLVEXONATED</title>
 </head>
 <body>
-  <script>
-    window.CMS_CONFIG = {
-      backend: {
-        name: "github",
-        repo: "makav007-iNKSTECHSHUB/ZaiLVEXONATED",
-        branch: "main"
-      },
-      media_folder: "images",
-      public_folder: "/images",
-      collections: [
-        {
-          name: "gallery",
-          label: "Infinite Stream Gallery",
-          folder: "images",
-          create: true,
-          slug: "{{slug}}",
-          fields: [
-            { label: "Display Title", name: "title", widget: "string" },
-            { label: "Upload Photo", name: "image", widget: "image" }
-          ]
-        }
-      ]
-    };
-  </script>
   <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
 </body>
 </html>
-<!-- Force Update -->
