@@ -3,288 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZaiLVEXONATED | Fine Art Editorial & Creator Hub</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>ZaiLVEXONATED | Official Hub</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #000000;
-            color: #f4f4f5;
+            background-color: #050505;
+            color: #f3f3f3;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
         }
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace;
+        .top-bar {
+            width: 100%;
+            max-width: 420px;
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 10px;
         }
-        ::-webkit-scrollbar {
-            width: 6px;
+        select {
+            background-color: #1a1a1a;
+            color: #fff;
+            border: 1px solid #333;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            outline: none;
+            cursor: pointer;
         }
-        ::-webkit-scrollbar-track {
-            background: #000000;
+        .container {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            margin: auto 0;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #27272a;
-            border-radius: 3px;
+        .avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid #e50914;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #e50914;
+            font-weight: bold;
+            margin: 0 auto 16px auto;
+            background-color: #121212;
+        }
+        h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .handle {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 20px;
+            font-family: monospace;
+        }
+        .bio {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+        .links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+        .link-btn {
+            display: block;
+            width: 100%;
+            padding: 14px 20px;
+            background-color: #141414;
+            border: 1px solid #262626;
+            border-radius: 12px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+        .link-btn:hover, .link-btn:active {
+            background-color: #222;
+            border-color: #e50914;
+        }
+        .footer {
+            padding: 20px 0;
+            font-size: 0.75rem;
+            color: #555;
+            text-align: center;
         }
     </style>
 </head>
-<body class="bg-black text-zinc-100 min-h-screen flex flex-col selection:bg-amber-400 selection:text-black relative">
+<body>
 
-    <!-- Toast Notification Banner -->
-    <div id="toastBanner" class="fixed top-5 right-5 z-50 hidden max-w-sm w-full transition-all duration-300">
-        <div class="bg-zinc-950 border border-zinc-800 text-white p-4 shadow-2xl flex items-start gap-3">
-            <div id="toastIcon" class="mt-0.5">
-                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-            </div>
-            <div class="flex-1">
-                <p id="toastTitle" class="text-xs font-bold uppercase tracking-wider text-white">PORTAL NOTICE</p>
-                <p id="toastMessage" class="text-xs text-zinc-400 mt-0.5 leading-normal">Operation completed.</p>
-            </div>
-            <button onclick="closeToast()" class="text-zinc-500 hover:text-white text-xs font-mono p-1">✕</button>
+    <div class="top-bar">
+        <select id="langSelect" onchange="switchLanguage(this.value)">
+            <option value="EN">🇬🇧 EN</option>
+            <option value="RU">🇷🇺 RU</option>
+            <option value="AR">🇸🇦 AR</option>
+            <option value="KO">🇰🇷 KO</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <div class="avatar">Z</div>
+        <h1>ZaiLVEXONATED</h1>
+        <div class="handle">@ZaiLVEXONATED</div>
+        <p class="bio" id="mainBio">Official digital hub & creative vault. Tap below to access verified platforms.</p>
+
+        <div class="links-list">
+            <a href="https://t.me/zailvexonated" class="link-btn" target="_blank" data-i18n-key="tg">🔥 Telegram Vault</a>
+            <a href="https://linktr.ee/zailvexonated" class="link-btn" target="_blank" data-i18n-key="lt">🔗 Linktree Hub</a>
+            <a href="https://x.com/ZaiLVEXONATED" class="link-btn" target="_blank" data-i18n-key="x">✖ X (Twitter)</a>
+            <a href="https://bsky.app/profile/digimedplay.bsky.social" class="link-btn" target="_blank" data-i18n-key="bs">🦋 Bluesky Profile</a>
+            <a href="https://www.facebook.com/share/14j3dHAd47k/" class="link-btn" target="_blank" data-i18n-key="fb">📘 Facebook Page</a>
         </div>
     </div>
 
-    <!-- SIDE NAVIGATION DRAWER (3 HORIZONTAL BARS / FLICKR STYLE) -->
-    <div id="sideDrawerOverlay" onclick="closeSideDrawer()" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
-    <aside id="sideDrawer" class="fixed top-0 left-0 h-full w-80 bg-zinc-950 border-r border-zinc-800 z-50 transform -translate-x-full transition-transform duration-300 flex flex-col justify-between shadow-2xl">
-        <div>
-            <!-- Drawer Header -->
-            <div class="p-6 border-b border-zinc-900 flex justify-between items-center bg-black">
-                <div class="flex items-center gap-2">
-                    <span class="w-3 h-3 bg-amber-400 rounded-full inline-block"></span>
-                    <span class="font-black tracking-widest text-white text-lg">ZAILVEXONATED</span>
-                </div>
-                <button onclick="closeSideDrawer()" class="text-zinc-500 hover:text-white font-mono text-sm p-1">✕</button>
-            </div>
-
-            <!-- Drawer Menu Links -->
-            <nav class="p-6 space-y-3 font-mono text-xs uppercase tracking-wider">
-                <button onclick="closeSideDrawer(); openUserProfileModal()" class="w-full text-left py-3 px-4 bg-zinc-900 hover:bg-zinc-800 text-amber-400 font-bold border border-zinc-800 flex items-center justify-between transition-colors">
-                    <span class="flex items-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                        <span>MY PROFILE</span>
-                    </span>
-                    <span class="text-[9px] bg-amber-400 text-black px-1.5 py-0.5 font-sans font-black">CREATOR</span>
-                </button>
-
-                <button onclick="closeSideDrawer(); showSection('editorial')" class="w-full text-left py-3 px-4 hover:bg-zinc-900 text-zinc-200 hover:text-white flex items-center justify-between border border-transparent hover:border-zinc-800 transition-colors">
-                    <span>HOME / EDITORIAL STUDIO</span>
-                    <span>→</span>
-                </button>
-
-                <button onclick="closeSideDrawer(); showSection('vault')" class="w-full text-left py-3 px-4 hover:bg-zinc-900 text-zinc-200 hover:text-white flex items-center justify-between border border-transparent hover:border-zinc-800 transition-colors">
-                    <span>CREATOR VAULT (MEDIA)</span>
-                    <span id="drawerVaultBadge" class="bg-zinc-800 text-zinc-400 text-[10px] px-2 py-0.5">0</span>
-                </button>
-
-                <button onclick="closeSideDrawer(); openUploadModal()" class="w-full text-left py-3 px-4 hover:bg-zinc-900 text-amber-400 font-bold flex items-center justify-between border border-transparent hover:border-zinc-800 transition-colors">
-                    <span>+ UPLOAD PHOTO / VIDEO</span>
-                    <span>⚡</span>
-                </button>
-
-                <button onclick="closeSideDrawer(); openAccountSettingsModal()" class="w-full text-left py-3 px-4 hover:bg-zinc-900 text-zinc-300 hover:text-white flex items-center justify-between border border-transparent hover:border-zinc-800 transition-colors">
-                    <span>ACCOUNT SETTINGS</span>
-                    <span>⚙️</span>
-                </button>
-
-                <!-- Language Selection inside Drawer -->
-                <div class="pt-4 border-t border-zinc-900 mt-4">
-                    <p class="text-[10px] text-zinc-500 mb-2 uppercase tracking-widest">// SELECT LANGUAGE</p>
-                    <select id="drawerLangSelect" onchange="changeLanguage(this.value)" class="w-full bg-black border border-zinc-800 text-zinc-300 p-2.5 text-xs font-mono focus:outline-none focus:border-amber-400">
-                        <option value="EN">🇬🇧 EN - English (Default)</option>
-                        <option value="RU">🇷🇺 RU - Русский</option>
-                        <option value="KO">🇰🇷 KO - 한국어</option>
-                        <option value="ES">🇪🇸 ES - Español</option>
-                        <option value="DE">🇩🇪 DE - Deutsch</option>
-                        <option value="FR">🇫🇷 FR - Français</option>
-                        <option value="JA">🇯🇵 JA - 日本語</option>
-                        <option value="PT">🇵🇹 PT - Português</option>
-                        <option value="IT">🇮🇹 IT - Italiano</option>
-                        <option value="AR">🇸🇦 AR - العربية</option>
-                    </select>
-                </div>
-            </nav>
-        </div>
-
-        <div class="p-6 border-t border-zinc-900 bg-black text-center">
-            <div id="drawerAuthSection">
-                <button onclick="closeSideDrawer(); openAuthModal()" class="w-full bg-white hover:bg-zinc-200 text-black font-bold text-xs py-3 uppercase tracking-widest transition-colors">
-                    LOG IN / SIGN UP
-                </button>
-            </div>
-            <p class="text-[10px] text-zinc-600 mt-3 font-mono">© 2026 ZaiLVEXONATED Studio</p>
-        </div>
-    </aside>
-
-    <!-- MAIN APP CONTAINER -->
-    <div class="flex-grow flex flex-col">
-        <!-- Header -->
-        <header class="border-b border-zinc-900 bg-black/95 backdrop-blur-md sticky top-0 z-40">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap justify-between items-center gap-4">
-                <div class="flex items-center gap-4">
-                    <button onclick="openSideDrawer()" class="p-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 hover:text-white transition-colors" title="Open Menu">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                    <a href="#" class="text-xl sm:text-2xl font-black tracking-widest text-white flex items-center gap-2">
-                        <span>ZAILVEXONATED</span>
-                    </a>
-                </div>
-
-                <!-- Top Search Bar -->
-                <div class="flex-1 max-w-xl mx-auto w-full">
-                    <form onsubmit="handleSearch(event)" class="flex items-center bg-zinc-900 border-2 border-amber-400/80 hover:border-amber-400 shadow-lg transition-colors">
-                        <div class="pl-3.5 text-amber-400 font-mono text-sm">🔍</div>
-                        <input 
-                            type="text" 
-                            id="topSearchBar" 
-                            placeholder="Search photos, creators, hashtags e.g. #nude #studio #film..." 
-                            class="w-full bg-transparent border-none px-3 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none font-mono"
-                        />
-                        <button type="submit" class="bg-amber-400 hover:bg-amber-300 text-black font-extrabold px-4 py-2 text-xs uppercase tracking-widest transition-colors flex items-center gap-1">
-                            <span>SEARCH</span>
-                            <span>→</span>
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Language & Auth Controls -->
-                <div class="flex items-center space-x-3 text-xs tracking-widest text-zinc-400 uppercase font-medium">
-                    <select id="headerLangSelect" onchange="changeLanguage(this.value)" class="bg-zinc-900 border border-zinc-800 text-zinc-200 px-2.5 py-1.5 text-[11px] font-mono focus:outline-none focus:border-amber-400 cursor-pointer">
-                        <option value="EN">🇬🇧 EN</option>
-                        <option value="RU">🇷🇺 RU</option>
-                        <option value="KO">🇰🇷 KO</option>
-                        <option value="ES">🇪🇸 ES</option>
-                        <option value="DE">🇩🇪 DE</option>
-                        <option value="FR">🇫🇷 FR</option>
-                        <option value="JA">🇯🇵 JA</option>
-                        <option value="PT">🇵🇹 PT</option>
-                        <option value="IT">🇮🇹 IT</option>
-                        <option value="AR">🇸🇦 AR</option>
-                    </select>
-
-                    <div id="authTriggerBtn">
-                        <button onclick="openAuthModal()" class="bg-zinc-100 hover:bg-white text-black px-4 py-2 text-xs font-bold uppercase tracking-widest transition-colors">
-                            Sign Up / Log In
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- Main Banner & Content -->
-        <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full flex-grow">
-            <div class="max-w-3xl mb-10">
-                <p class="text-xs text-amber-400 uppercase tracking-widest mb-2 font-mono">// FINE ART EDITORIAL & CREATOR HUB</p>
-                <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-                    Editorial Collections & Cinematic Studies
-                </h2>
-                <p class="text-zinc-400 text-base sm:text-lg leading-relaxed">
-                    Explore high-resolution master photographic archives and cinematic motion studies. Verified members can publish photos and videos directly to the public creator vault.
-                </p>
-
-                <div class="flex flex-wrap items-center gap-3 mt-6">
-                    <button onclick="openUploadModal()" class="bg-amber-400 text-black hover:bg-amber-300 px-5 py-2.5 text-xs font-bold uppercase tracking-widest transition-colors flex items-center gap-2 shadow-xl">
-                        <span>Publish Media (Photo / Video)</span>
-                    </button>
-                    <button onclick="openAccountSettingsModal()" class="bg-zinc-900 hover:bg-zinc-800 text-zinc-300 border border-zinc-800 px-4 py-2.5 text-xs font-bold uppercase tracking-widest transition-colors">
-                        Manage Account & Profile
-                    </button>
-                </div>
-            </div>
-        </main>
-        <script>
-    // --- SIDE DRAWER LOGIC ---
-    function openSideDrawer() {
-        const drawer = document.getElementById('sideDrawer');
-        const overlay = document.getElementById('sideDrawerOverlay');
-        if (drawer && overlay) {
-            drawer.classList.remove('-translate-x-full');
-            overlay.classList.remove('hidden');
-        }
-    }
-
-    function closeSideDrawer() {
-        const drawer = document.getElementById('sideDrawer');
-        const overlay = document.getElementById('sideDrawerOverlay');
-        if (drawer && overlay) {
-            drawer.classList.add('-translate-x-full');
-            overlay.classList.add('hidden');
-        }
-    }
-
-    // --- TOAST NOTIFICATION LOGIC ---
-    function showToast(title, message, type = 'success') {
-        const banner = document.getElementById('toastBanner');
-        const titleEl = document.getElementById('toastTitle');
-        const msgEl = document.getElementById('toastMessage');
-        
-        if (banner && titleEl && msgEl) {
-            titleEl.textContent = title;
-            msgEl.textContent = message;
-            banner.classList.remove('hidden');
-            
-            // Auto hide after 4 seconds
-            setTimeout(() => {
-                closeToast();
-            }, 4000);
-        }
-    }
-
-    function closeToast() {
-        const banner = document.getElementById('toastBanner');
-        if (banner) {
-            banner.classList.add('hidden');
-        }
-    }
-
-    // --- MODAL / SECTION TRIGGERS ---
-    function openUserProfileModal() {
-        showToast('CREATOR PROFILE', 'Loading ZaiLVEXONATED creator profile view...', 'info');
-    }
-
-    function openUploadModal() {
-        showToast('UPLOAD PORTAL', 'Media upload ready. Connect your asset files.', 'info');
-    }
-
-    function openAccountSettingsModal() {
-        showToast('SETTINGS', 'Opening secure configuration panel...', 'info');
-    }
-
-    function openAuthModal() {
-        showToast('PORTAL ACCESS', 'Login / Sign up gateway activated.', 'info');
-    }
-
-    function showSection(sectionName) {
-        showToast('NAVIGATION', `Switching active view to: ${sectionName.toUpperCase()}`, 'info');
-    }
-
-    // --- SEARCH BAR LOGIC ---
-    function handleSearch(event) {
-        event.preventDefault();
-        const queryInput = document.getElementById('topSearchBar');
-        if (queryInput && queryInput.value.trim() !== "") {
-            showToast('SEARCH ENGINE', `Query submitted: "${queryInput.value}"`, 'success');
-            queryInput.value = ""; // clear after search
-        } else {
-            showToast('SEARCH WARNING', 'Please enter a keyword or tag to search.', 'warning');
-        }
-    }
-
-    // --- LANGUAGE SWITCHING LOGIC ---
-    function changeLanguage(langCode) {
-        // Sync both dropdowns if changed
-        const headerSelect = document.getElementById('headerLangSelect');
-        const drawerSelect = document.getElementById('drawerLangSelect');
-        
-        if (headerSelect) headerSelect.value = langCode;
-        if (drawerSelect) drawerSelect.value = langCode;
-
-        showToast('LOCALIZATION', `Language successfully switched to [ ${langCode} ]`, 'success');
-    }
-</script>
+    <div class="footer">
+        &copy; 2026 ZaiLVEXONATED. All Rights Reserved.
     </div>
+
+    <script>
+        const dictionary = {
+            EN: {
+                bio: "Official digital hub & creative vault. Tap below to access verified platforms.",
+                tg: "🔥 Telegram Vault",
+                lt: "🔗 Linktree Hub",
+                x: "✖ X (Twitter)",
+                bs: "🦋 Bluesky Profile",
+                fb: "📘 Facebook Page"
+            },
+            RU: {
+                bio: "Официальный цифровой хаб и творческий архив. Переходите на проверенные платформы ниже.",
+                tg: "🔥 Telegram Канал",
+                lt: "🔗 Linktree Хаб",
+                x: "✖ X (Твиттер)",
+                bs: "🦋 Bluesky Профиль",
+                fb: "📘 Страница Facebook"
+            },
+            AR: {
+                bio: "المنصة الرقمية الرسمية والأرشيف الإبداعي. اضغط أدناه للوصول إلى المنصات المعتمدة.",
+                tg: "🔥 قناة تيليجرام",
+                lt: "🔗 بوابة Linktree",
+                x: "✖ منصة X",
+                bs: "🦋 حساب Bluesky",
+                fb: "📘 صفحة فيسبوك"
+            },
+            KO: {
+                bio: "공식 디지털 허브 및 크리에이티브 볼트. 아래 플랫폼에서 확인하세요.",
+                tg: "🔥 텔레그램 볼트",
+                lt: "🔗 링크트리 허브",
+                x: "✖ X (트위터)",
+                bs: "🦋 블루스카이 프로필",
+                fb: "📘 페이스북 페이지"
+            }
+        };
+
+        function switchLanguage(lang) {
+            const t = dictionary[lang];
+            if (!t) return;
+
+            document.getElementById('mainBio').textContent = t.bio;
+            document.querySelector('[data-i18n-key="tg"]').textContent = t.tg;
+            document.querySelector('[data-i18n-key="lt"]').textContent = t.lt;
+            document.querySelector('[data-i18n-key="x"]').textContent = t.x;
+            document.querySelector('[data-i18n-key="bs"]').textContent = t.bs;
+            document.querySelector('[data-i18n-key="fb"]').textContent = t.fb;
+        }
+    </script>
 </body>
 </html>
