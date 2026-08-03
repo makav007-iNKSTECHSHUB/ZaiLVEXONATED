@@ -1,189 +1,684 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZaiLVEXONATED | Official Hub</title>
+    <title>ZaiLVEXONATED | Fine Art Editorial & Creator Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        symbolicsDark: '#080c14',
+                        symbolicsCard: '#0f172a',
+                        symbolicsBorder: '#1e293b',
+                        cyanNeon: '#00f0ff',
+                        greenNeon: '#00ff66',
+                        amberNeon: '#ffcc00',
+                        pinkNeon: '#ff2a85'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+        
         body {
-            background-color: #050505;
-            color: #f3f3f3;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
+            background-color: #060910;
+            color: #f1f5f9;
         }
-        .top-bar {
-            width: 100%;
-            max-width: 420px;
-            display: flex;
-            justify-content: flex-end;
-            padding-top: 10px;
+
+        /* CRT Grid & Scanlines effect */
+        .crt-overlay {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
         }
-        select {
-            background-color: #1a1a1a;
-            color: #fff;
-            border: 1px solid #333;
-            padding: 6px 10px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            outline: none;
-            cursor: pointer;
+
+        .neon-glow-cyan {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
         }
-        .container {
-            width: 100%;
-            max-width: 420px;
-            text-align: center;
-            margin: auto 0;
+        .neon-border-cyan {
+            border-color: rgba(0, 240, 255, 0.4);
         }
-        .avatar {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            border: 2px solid #e50914;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: #e50914;
-            font-weight: bold;
-            margin: 0 auto 16px auto;
-            background-color: #121212;
+        .neon-glow-amber {
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.25);
         }
-        h1 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
+
+        ::-webkit-scrollbar {
+            width: 5px;
         }
-        .handle {
-            font-size: 0.85rem;
-            color: #888;
-            margin-bottom: 20px;
-            font-family: monospace;
+        ::-webkit-scrollbar-track {
+            background: #060910;
         }
-        .bio {
-            font-size: 0.95rem;
-            color: #ccc;
-            margin-bottom: 30px;
-            line-height: 1.4;
-        }
-        .links-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
-        }
-        .link-btn {
-            display: block;
-            width: 100%;
-            padding: 14px 20px;
-            background-color: #141414;
-            border: 1px solid #262626;
-            border-radius: 12px;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-        }
-        .link-btn:hover, .link-btn:active {
-            background-color: #222;
-            border-color: #e50914;
-        }
-        .footer {
-            padding: 20px 0;
-            font-size: 0.75rem;
-            color: #555;
-            text-align: center;
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 3px;
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between selection:bg-cyan-400 selection:text-black relative">
 
-    <div class="top-bar">
-        <select id="langSelect" onchange="switchLanguage(this.value)">
-            <option value="EN">🇬🇧 EN</option>
-            <option value="RU">🇷🇺 RU</option>
-            <option value="AR">🇸🇦 AR</option>
-            <option value="KO">🇰🇷 KO</option>
-        </select>
-    </div>
+    <div class="fixed inset-0 crt-overlay z-50 pointer-events-none"></div>
 
-    <div class="container">
-        <div class="avatar">Z</div>
-        <h1>ZaiLVEXONATED</h1>
-        <div class="handle">@ZaiLVEXONATED</div>
-        <p class="bio" id="mainBio">Official digital hub & creative vault. Tap below to access verified platforms.</p>
-
-        <div class="links-list">
-            <a href="https://t.me/zailvexonated" class="link-btn" target="_blank" data-i18n-key="tg">🔥 Telegram Vault</a>
-            <a href="https://linktr.ee/zailvexonated" class="link-btn" target="_blank" data-i18n-key="lt">🔗 Linktree Hub</a>
-            <a href="https://x.com/ZaiLVEXONATED" class="link-btn" target="_blank" data-i18n-key="x">✖ X (Twitter)</a>
-            <a href="https://bsky.app/profile/digimedplay.bsky.social" class="link-btn" target="_blank" data-i18n-key="bs">🦋 Bluesky Profile</a>
-            <a href="https://www.facebook.com/share/14j3dHAd47k/" class="link-btn" target="_blank" data-i18n-key="fb">📘 Facebook Page</a>
+    <div id="toastBanner" class="fixed top-5 right-5 z-[100] hidden max-w-sm w-full transition-all duration-300">
+        <div class="bg-slate-950 border neon-border-cyan text-white p-4 shadow-2xl flex items-start gap-3 rounded-xl">
+            <div class="mt-0.5 text-cyanNeon font-mono text-sm">✦</div>
+            <div class="flex-1">
+                <p id="toastTitle" class="text-xs font-bold uppercase tracking-wider text-cyanNeon">SYSTEM NOTIFICATION</p>
+                <p id="toastMessage" class="text-xs text-slate-400 mt-0.5 leading-normal">Operation completed successfully.</p>
+            </div>
+            <button onclick="closeToast()" class="text-slate-500 hover:text-white text-xs font-mono p-1">✕</button>
         </div>
     </div>
 
-    <div class="footer">
-        &copy; 2026 ZaiLVEXONATED. All Rights Reserved.
+    <div class="bg-slate-950 border-b border-slate-900 py-1.5 px-4 text-[11px] font-mono text-slate-400 flex flex-wrap justify-between items-center z-40">
+        <div class="flex items-center gap-3">
+            <span class="inline-flex items-center gap-1.5 text-greenNeon">
+                <span class="w-2 h-2 rounded-full bg-greenNeon animate-pulse"></span>
+                <span>SYSTEM ONLINE</span>
+            </span>
+            <span class="text-slate-700">|</span>
+            <span class="text-cyanNeon">⚡ INSIDERS: 20,213</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden sm:flex items-center gap-2 text-slate-400">
+                <span>[TICKER: LOADING HISTORICAL_DATA..._]</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="#" onclick="showToast('Social Hub', 'Redirecting to Twitter archive...')" class="hover:text-cyanNeon transition-colors">TWITTER</a>
+                <a href="#" onclick="showToast('Social Hub', 'Redirecting to LinkedIn developer network...')" class="hover:text-cyanNeon transition-colors">LINKEDIN</a>
+                <button onclick="sharePortalLink()" class="text-amberNeon hover:underline">SHARE</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="sideDrawerOverlay" onclick="closeSideDrawer()" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[90] hidden transition-opacity"></div>
+    <aside id="sideDrawer" class="fixed top-0 left-0 h-full w-80 bg-slate-950 border-r border-slate-900 z-[100] transform -translate-x-full transition-transform duration-300 flex flex-col justify-between shadow-2xl">
+        <div>
+            <div class="p-6 border-b border-slate-900 flex justify-between items-center bg-black">
+                <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 bg-cyanNeon rounded-full inline-block neon-glow-cyan"></span>
+                    <span class="font-extrabold tracking-widest text-white text-base">ZAILVEXONATED</span>
+                </div>
+                <button onclick="closeSideDrawer()" class="text-slate-500 hover:text-white font-mono text-sm p-1">✕</button>
+            </div>
+
+            <nav class="p-6 space-y-2.5 font-mono text-xs uppercase tracking-wider">
+                <button onclick="closeSideDrawer(); openLayerModal('profile')" class="w-full text-left py-3 px-4 bg-slate-900 hover:bg-slate-850 text-cyanNeon font-bold border border-slate-800 flex items-center justify-between transition-colors rounded-lg">
+                    <span class="flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                        <span>MY PROFILE (LAYER)</span>
+                    </span>
+                    <span class="text-[9px] bg-cyan-500/10 text-cyanNeon border neon-border-cyan px-1.5 py-0.5 font-sans font-bold">CREATOR</span>
+                </button>
+
+                <button onclick="closeSideDrawer(); switchMainView('studio')" class="w-full text-left py-3 px-4 hover:bg-slate-900 text-slate-300 hover:text-white flex items-center justify-between border border-transparent hover:border-slate-800 transition-colors rounded-lg">
+                    <span>HOME / EDITORIAL STUDIO</span>
+                    <span>→</span>
+                </button>
+
+                <button onclick="closeSideDrawer(); openLayerModal('vault')" class="w-full text-left py-3 px-4 hover:bg-slate-900 text-slate-300 hover:text-white flex items-center justify-between border border-transparent hover:border-slate-800 transition-colors rounded-lg">
+                    <span>CREATOR VAULT (LAYER)</span>
+                    <span id="drawerVaultBadge" class="bg-slate-950 text-cyanNeon border neon-border-cyan text-[10px] px-2 py-0.5 rounded">14</span>
+                </button>
+
+                <button onclick="closeSideDrawer(); openLayerModal('upload')" class="w-full text-left py-3 px-4 hover:bg-slate-900 text-cyanNeon font-bold flex items-center justify-between border border-transparent hover:border-slate-800 transition-colors rounded-lg">
+                    <span>+ UPLOAD MEDIA STUDIO</span>
+                    <span>⚡</span>
+                </button>
+
+                <button onclick="closeSideDrawer(); openLayerModal('settings')" class="w-full text-left py-3 px-4 hover:bg-slate-900 text-slate-300 hover:text-white flex items-center justify-between border border-transparent hover:border-slate-800 transition-colors rounded-lg">
+                    <span>ACCOUNT SETTINGS</span>
+                    <span>⚙️</span>
+                </button>
+
+                <div class="pt-4 border-t border-slate-900 mt-4">
+                    <p class="text-[10px] text-slate-500 mb-2 uppercase tracking-widest">// SELECT LANGUAGE</p>
+                    <select id="drawerLangSelect" onchange="changeLanguage(this.value)" class="w-full bg-black border border-slate-800 text-slate-300 p-2.5 text-xs font-mono focus:outline-none focus:border-cyanNeon rounded-lg">
+                        <option value="EN">🇬🇧 EN - English</option>
+                        <option value="RU">🇷🇺 RU - Русский</option>
+                        <option value="KO">🇰🇷 KO - 한국어</option>
+                        <option value="ES">🇪🇸 ES - Español</option>
+                        <option value="DE">🇩🇪 DE - Deutsch</option>
+                        <option value="FR">🇫🇷 FR - Français</option>
+                        <option value="JA">🇯🇵 JA - 日本語</option>
+                        <option value="PT">🇵🇹 PT - Português</option>
+                        <option value="IT">🇮🇹 IT - Italiano</option>
+                        <option value="AR">🇸🇦 AR - العربية</option>
+                    </select>
+                </div>
+            </nav>
+        </div>
+
+        <div class="p-6 border-t border-slate-900 bg-black text-center">
+            <div id="drawerAuthSection">
+                <button onclick="closeSideDrawer(); openLayerModal('auth')" class="w-full bg-cyanNeon hover:bg-cyan-400 text-black font-extrabold text-xs py-3 uppercase tracking-widest transition-colors rounded-lg shadow-md shadow-cyan-500/10">
+                    LOG IN / SIGN UP (OAUTH)
+                </button>
+            </div>
+            <p class="text-[10px] text-slate-600 mt-3 font-mono">© 2026 ZaiLVEXONATED Studio</p>
+        </div>
+    </aside>
+
+    <div class="flex-grow flex flex-col">
+        <header class="border-b border-slate-900 bg-black/90 backdrop-blur-md sticky top-0 z-30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap justify-between items-center gap-4">
+                <div class="flex items-center gap-4">
+                    <button onclick="openSideDrawer()" class="p-2.5 bg-slate-900 hover:bg-slate-850 border border-slate-800 text-slate-300 hover:text-white transition-colors rounded-lg flex items-center justify-center" title="Open Menu">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    <a href="#" onclick="switchMainView('studio')" class="text-lg sm:text-xl font-black tracking-widest text-white flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 bg-cyanNeon rounded-full inline-block neon-glow-cyan"></span>
+                        <span>ZAILVEXONATED</span>
+                    </a>
+                </div>
+
+                <div class="flex-1 max-w-xl mx-auto w-full">
+                    <form onsubmit="handleSearch(event)" class="flex items-center bg-slate-900 border neon-border-cyan rounded-xl overflow-hidden shadow-lg transition-colors">
+                        <div class="pl-3.5 text-cyanNeon font-mono text-sm">🔍</div>
+                        <input 
+                            type="text" 
+                            id="topSearchBar" 
+                            placeholder="Search archives, creators, hashtags e.g. #nude #studio #film..." 
+                            class="w-full bg-transparent border-none px-3 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none font-mono"
+                        />
+                        <button type="submit" class="bg-cyanNeon hover:bg-cyan-400 text-black font-extrabold px-4 py-2.5 text-xs uppercase tracking-widest transition-colors flex items-center gap-1">
+                            <span>SEARCH</span>
+                            <span>→</span>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="flex items-center space-x-3 text-xs tracking-widest text-slate-400 uppercase font-medium">
+                    <select id="headerLangSelect" onchange="changeLanguage(this.value)" class="bg-slate-900 border border-slate-800 text-slate-200 px-2.5 py-2 text-[11px] font-mono focus:outline-none focus:border-cyanNeon cursor-pointer rounded-lg">
+                        <option value="EN">🇬🇧 EN</option>
+                        <option value="RU">🇷🇺 RU</option>
+                        <option value="KO">🇰🇷 KO</option>
+                        <option value="ES">🇪🇸 ES</option>
+                        <option value="DE">🇩🇪 DE</option>
+                        <option value="FR">🇫🇷 FR</option>
+                        <option value="JA">🇯🇵 JA</option>
+                        <option value="PT">🇵🇹 PT</option>
+                        <option value="IT">🇮🇹 IT</option>
+                        <option value="AR">🇸🇦 AR</option>
+                    </select>
+
+                    <div id="authTriggerBtn">
+                        <button onclick="openLayerModal('auth')" class="bg-slate-900 hover:bg-slate-850 text-white border neon-border-cyan px-4 py-2 text-xs font-bold uppercase tracking-widest transition-colors rounded-lg shadow-sm">
+                            Sign Up / Log In
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 py-10 w-full flex-grow">
+            
+            <div id="viewStudio" class="space-y-10">
+                <div class="max-w-3xl">
+                    <p class="text-xs text-cyanNeon uppercase tracking-widest mb-2 font-mono">// SYMBOLICS RETRO-CYBER TERMINAL & ARCHIVE</p>
+                    <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white mb-4">
+                        Fine Art Editorial & Creator Hub
+                    </h1>
+                    <p class="text-slate-400 text-base sm:text-lg leading-relaxed font-light">
+                        Explore master photographic archives and cinematic motion studies. Verified members can publish photos and videos directly to the public creator vault or execute commands via the terminal below.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-3 mt-6">
+                        <button onclick="openLayerModal('upload')" class="bg-cyanNeon hover:bg-cyan-400 text-black px-5 py-3 text-xs font-extrabold uppercase tracking-widest transition-colors flex items-center gap-2 rounded-lg shadow-lg shadow-cyan-500/10">
+                            <span>Publish Media (Photo / Video)</span>
+                        </button>
+                        <button onclick="openLayerModal('settings')" class="bg-slate-900 hover:bg-slate-850 text-slate-300 border border-slate-800 px-4 py-3 text-xs font-bold uppercase tracking-widest transition-colors rounded-lg">
+                            Manage Account Settings
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2 bg-slate-950 border neon-border-cyan rounded-2xl overflow-hidden shadow-2xl flex flex-col">
+                        <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                                <span class="text-xs font-mono text-cyanNeon ml-2">// HISTORY EXPLORER CLI</span>
+                            </div>
+                            <span class="text-[10px] font-mono text-slate-500">VT-100 EMULATOR</span>
+                        </div>
+
+                        <div id="terminalOutput" class="p-5 font-mono text-xs text-slate-300 h-64 overflow-y-auto space-y-2 bg-black/60">
+                            <p class="text-cyanNeon">ZAILVEXONATED Terminal [Version 4.2.0-RETRO]</p>
+                            <p class="text-slate-500">Type <span class="text-white font-bold">help</span> or click quick command chips below to query historical internet milestones and domain archives.</p>
+                            <p class="text-greenNeon">> System initialized. Ready for query execution.</p>
+                        </div>
+
+                        <div class="px-4 py-2.5 bg-slate-900/60 border-t border-slate-850 flex flex-wrap gap-2 items-center">
+                            <span class="text-[10px] font-mono text-slate-500">QUICK:</span>
+                            <button onclick="runCommand('explore')" class="bg-slate-900 hover:bg-slate-800 text-cyanNeon border neon-border-cyan px-2.5 py-1 text-[11px] font-mono rounded">explore</button>
+                            <button onclick="runCommand('timeline')" class="bg-slate-900 hover:bg-slate-800 text-cyanNeon border neon-border-cyan px-2.5 py-1 text-[11px] font-mono rounded">timeline</button>
+                            <button onclick="runCommand('domains')" class="bg-slate-900 hover:bg-slate-800 text-cyanNeon border neon-border-cyan px-2.5 py-1 text-[11px] font-mono rounded">domains</button>
+                            <button onclick="runCommand('random')" class="bg-slate-900 hover:bg-slate-800 text-cyanNeon border neon-border-cyan px-2.5 py-1 text-[11px] font-mono rounded">random</button>
+                            <button onclick="runCommand('vault')" class="bg-slate-900 hover:bg-slate-800 text-cyanNeon border neon-border-cyan px-2.5 py-1 text-[11px] font-mono rounded">vault</button>
+                            <button onclick="runCommand('clear')" class="bg-slate-900 hover:bg-slate-800 text-slate-400 border border-slate-800 px-2.5 py-1 text-[11px] font-mono rounded">clear</button>
+                        </div>
+
+                        <form onsubmit="handleTerminalSubmit(event)" class="p-3 bg-black border-t border-slate-900 flex items-center gap-2">
+                            <span class="text-cyanNeon font-mono text-xs pl-2">root@zailvexonated:~$</span>
+                            <input 
+                                type="text" 
+                                id="terminalInputBox" 
+                                placeholder="Type command (e.g. help, vault, upload, profile)..." 
+                                class="w-full bg-transparent border-none text-xs text-white placeholder-slate-600 focus:outline-none font-mono"
+                            />
+                            <button type="submit" class="bg-cyanNeon hover:bg-cyan-400 text-black font-extrabold px-4 py-2 text-xs font-mono uppercase rounded">RUN</button>
+                        </form>
+                    </div>
+
+                    <div class="bg-slate-950 border border-slate-900 rounded-2xl p-6 flex flex-col justify-between shadow-xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-[10px] font-mono bg-cyan-500/10 text-cyanNeon border neon-border-cyan px-2 py-0.5 rounded font-bold">DAY #214 CHALLENGE</span>
+                                <span class="text-[10px] font-mono text-slate-500">ARCHIVE_ID: 1983</span>
+                            </div>
+                            <h3 class="font-bold text-white text-base mb-2">The Birth of Domain Names</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed font-light">
+                                In November 1983, Paul Mockapetris created the Domain Name System (DNS), transforming numerical IP addresses into human-readable web portals like symbolics.com.
+                            </p>
+                        </div>
+                        
+                        <div class="mt-6 pt-4 border-t border-slate-900">
+                            <button onclick="triggerDailyChallengeFact()" class="w-full bg-slate-900 hover:bg-slate-850 text-cyanNeon border neon-border-cyan py-3 px-4 rounded-xl text-xs font-bold uppercase font-mono tracking-wider transition-colors shadow-sm flex items-center justify-center gap-2">
+                                <span>⚡ UNLOCK NEW HISTORICAL FACT</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <div class="mb-6 flex justify-between items-center border-b border-slate-900 pb-4">
+                        <h3 class="text-sm font-mono uppercase tracking-widest text-slate-300">// FEATURED EDITORIAL GALLERIES</h3>
+                        <span class="text-xs font-mono text-cyanNeon">SECURE ENCRYPTION ACTIVE</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-slate-950 border border-slate-900 rounded-2xl overflow-hidden hover:border-cyan-500/40 transition-all group cursor-pointer" onclick="openLayerModal('vault')">
+                            <div class="h-64 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                                <span class="text-slate-600 font-mono text-xs">COLLECTION_01.RAW</span>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                                <span class="absolute top-3 right-3 bg-black/80 text-cyanNeon border neon-border-cyan text-[10px] font-mono px-2 py-1 rounded">4K PHOTO SET</span>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="font-bold text-white text-base group-hover:text-cyanNeon transition-colors">Nocturnal Studies Vol. I</h4>
+                                <p class="text-xs text-slate-400 mt-1">High-contrast studio lighting & monochrome cinematic grain.</p>
+                                <div class="mt-4 flex justify-between items-center text-xs font-mono">
+                                    <span class="text-slate-500">42 ASSETS</span>
+                                    <span class="text-cyanNeon font-bold">VIEW VAULT LAYER →</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-950 border border-slate-900 rounded-2xl overflow-hidden hover:border-cyan-500/40 transition-all group cursor-pointer" onclick="openLayerModal('vault')">
+                            <div class="h-64 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                                <span class="text-slate-600 font-mono text-xs">MOTION_STUDY_02.MP4</span>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                                <span class="absolute top-3 right-3 bg-black/80 text-cyanNeon border neon-border-cyan text-[10px] font-mono px-2 py-1 rounded">CINEMATIC VIDEO</span>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="font-bold text-white text-base group-hover:text-cyanNeon transition-colors">Echoes in Amber</h4>
+                                <p class="text-xs text-slate-400 mt-1">Full-length 60fps motion sequence and artistic walkthrough.</p>
+                                <div class="mt-4 flex justify-between items-center text-xs font-mono">
+                                    <span class="text-slate-500">12 MINS</span>
+                                    <span class="text-cyanNeon font-bold">VIEW VAULT LAYER →</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-950 border border-slate-900 rounded-2xl overflow-hidden hover:border-cyan-500/40 transition-all group cursor-pointer" onclick="openLayerModal('vault')">
+                            <div class="h-64 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                                <span class="text-slate-600 font-mono text-xs">SERIES_03.RAW</span>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                                <span class="absolute top-3 right-3 bg-black/80 text-cyanNeon border neon-border-cyan text-[10px] font-mono px-2 py-1 rounded">EDITORIAL SET</span>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="font-bold text-white text-base group-hover:text-cyanNeon transition-colors">Velvet & Shadow</h4>
+                                <p class="text-xs text-slate-400 mt-1">Uncensored fine art portraits captured on analog medium format.</p>
+                                <div class="mt-4 flex justify-between items-center text-xs font-mono">
+                                    <span class="text-slate-500">35 ASSETS</span>
+                                    <span class="text-cyanNeon font-bold">VIEW VAULT LAYER →</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="border-t border-slate-900 py-8 text-center text-xs text-slate-600 font-mono bg-black">
+            <p>&copy; 2026 ZaiLVEXONATED Studio Archive. Symbolics Cyber-Terminal Protocol Active.</p>
+        </footer>
+    </div>
+
+    <div id="layerAuth" class="fixed inset-0 bg-black/85 backdrop-blur-md z-[110] hidden flex items-center justify-center p-4">
+        <div class="bg-slate-950 border border-slate-800 rounded-2xl w-full max-w-md p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeLayerModal('auth')" class="absolute top-4 right-4 text-slate-400 hover:text-white font-mono text-sm">✕</button>
+            
+            <div class="text-center mb-6">
+                <span class="w-2.5 h-2.5 bg-cyanNeon rounded-full inline-block mb-2 neon-glow-cyan"></span>
+                <h3 class="text-base font-black tracking-wider text-white">OAUTH SECURE GATEWAY</h3>
+                <p class="text-xs text-slate-400 mt-1">Authenticate instantly using your preferred provider or developer pass.</p>
+            </div>
+
+            <div class="mb-4">
+                <button onclick="instantMemberLogin()" class="w-full bg-amberNeon hover:bg-yellow-400 text-black font-extrabold py-3 px-4 rounded-xl text-xs uppercase tracking-widest transition-colors shadow-lg shadow-amber-500/15 flex items-center justify-center gap-2">
+                    <span>⚡ INSTANT MEMBER LOGIN (NO PASSWORD)</span>
+                </button>
+            </div>
+
+            <div class="relative flex py-2 items-center">
+                <div class="flex-grow border-t border-slate-900"></div>
+                <span class="flex-shrink mx-4 text-[10px] text-slate-600 font-mono">OAUTH PROTOCOLS</span>
+                <div class="flex-grow border-t border-slate-900"></div>
+            </div>
+
+            <div class="space-y-2.5 mt-4">
+                <button onclick="handleOAuth('Google')" class="w-full flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-850 border border-slate-850 py-3 px-4 rounded-xl text-xs font-bold tracking-wide text-white transition-colors">
+                    <span>🌐</span> Continue with Google
+                </button>
+                <button onclick="handleOAuth('Apple')" class="w-full flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-850 border border-slate-850 py-3 px-4 rounded-xl text-xs font-bold tracking-wide text-white transition-colors">
+                    <span>🍎</span> Continue with Apple ID
+                </button>
+                <button onclick="handleOAuth('Instagram')" class="w-full flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-850 border border-slate-850 py-3 px-4 rounded-xl text-xs font-bold tracking-wide text-white transition-colors">
+                    <span>📸</span> Continue with Instagram Creator
+                </button>
+                <button onclick="handleOAuth('Facebook')" class="w-full flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-850 border border-slate-850 py-3 px-4 rounded-xl text-xs font-bold tracking-wide text-white transition-colors">
+                    <span>📘</span> Continue with Facebook
+                </button>
+                <button onclick="handleOAuth('GitHub')" class="w-full flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-850 border border-slate-850 py-3 px-4 rounded-xl text-xs font-bold tracking-wide text-white transition-colors">
+                    <span>💻</span> Continue with GitHub
+                </button>
+                <button onclick="handleOAuth('Discord')" class="w-full flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-850 border border-slate-850 py-3 px-4 rounded-xl text-xs font-bold tracking-wide text-white transition-colors">
+                    <span>💬</span> Continue with Discord Community
+                </button>
+            </div>
+
+            <p class="text-[10px] text-slate-500 text-center mt-6 font-mono">Secure token session verification active.</p>
+        </div>
+    </div>
+
+    <div id="layerProfile" class="fixed inset-0 bg-black/85 backdrop-blur-md z-[110] hidden flex items-center justify-center p-4">
+        <div class="bg-slate-950 border neon-border-cyan rounded-2xl w-full max-w-lg p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeLayerModal('profile')" class="absolute top-4 right-4 text-slate-400 hover:text-white font-mono text-sm">✕</button>
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-14 h-14 bg-slate-900 border neon-border-cyan rounded-full flex items-center justify-center text-cyanNeon font-bold text-xl">ZV</div>
+                <div>
+                    <h3 class="text-base font-black tracking-wider text-white">ZAILVEXONATED CREATOR</h3>
+                    <p class="text-xs text-cyanNeon font-mono">STATUS: VERIFIED INSIDER</p>
+                </div>
+            </div>
+            <div class="space-y-4 font-mono text-xs">
+                <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-850 flex justify-between">
+                    <span class="text-slate-400">PUBLISHED ASSETS:</span>
+                    <span class="text-white font-bold">14 ITEMS</span>
+                </div>
+                <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-850 flex justify-between">
+                    <span class="text-slate-400">VAULT STORAGE:</span>
+                    <span class="text-cyanNeon font-bold">4.2 GB / 50 GB</span>
+                </div>
+                <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-850 flex justify-between">
+                    <span class="text-slate-400">OAUTH LINKED:</span>
+                    <span class="text-greenNeon font-bold">ACTIVE (GOOGLE / INSTAGRAM)</span>
+                </div>
+            </div>
+            <div class="mt-6">
+                <button onclick="closeLayerModal('profile'); openLayerModal('settings')" class="w-full bg-cyanNeon text-black font-extrabold py-3 rounded-xl text-xs uppercase font-mono tracking-wider">Configure Profile Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="layerVault" class="fixed inset-0 bg-black/85 backdrop-blur-md z-[110] hidden flex items-center justify-center p-4">
+        <div class="bg-slate-950 border neon-border-cyan rounded-2xl w-full max-w-3xl p-6 sm:p-8 relative shadow-2xl max-h-[85vh] overflow-y-auto">
+            <button onclick="closeLayerModal('vault')" class="absolute top-4 right-4 text-slate-400 hover:text-white font-mono text-sm">✕</button>
+            <div class="mb-6">
+                <span class="text-[10px] font-mono text-cyanNeon">// CREATOR VAULT MEDIA LAYER</span>
+                <h3 class="text-lg font-black tracking-wider text-white mt-1">High-Resolution Master Archives</h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                    <div class="h-36 bg-slate-950 rounded-lg flex items-center justify-center text-slate-500 font-mono text-xs mb-3">ASSET_001_RAW.PNG</div>
+                    <h4 class="font-bold text-white text-xs">Cybernetic Portrait Series</h4>
+                    <p class="text-[11px] text-slate-400 mt-1">Uploaded 2 hours ago • 4K Uncompressed</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                    <div class="h-36 bg-slate-950 rounded-lg flex items-center justify-center text-slate-500 font-mono text-xs mb-3">ASSET_002_STUDIO.MP4</div>
+                    <h4 class="font-bold text-white text-xs">Backstage Walkthrough 60FPS</h4>
+                    <p class="text-[11px] text-slate-400 mt-1">Uploaded yesterday • 1080p Cinematic</p>
+                </div>
+            </div>
+            <div class="mt-6 flex justify-between items-center">
+                <button onclick="openLayerModal('upload')" class="bg-cyanNeon text-black font-bold text-xs px-4 py-2.5 rounded-xl uppercase font-mono">+ Upload New Asset</button>
+                <button onclick="closeLayerModal('vault')" class="bg-slate-900 text-slate-300 px-4 py-2.5 rounded-xl text-xs font-bold uppercase font-mono">Close Vault</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="layerUpload" class="fixed inset-0 bg-black/85 backdrop-blur-md z-[110] hidden flex items-center justify-center p-4">
+        <div class="bg-slate-950 border border-slate-800 rounded-2xl w-full max-w-lg p-6 relative shadow-2xl">
+            <button onclick="closeLayerModal('upload')" class="absolute top-4 right-4 text-slate-400 hover:text-white font-mono text-sm">✕</button>
+            <h3 class="text-sm font-black tracking-wider text-white mb-4">// PUBLISH MEDIA TO VAULT</h3>
+            <div class="border-2 border-dashed border-slate-800 rounded-xl p-8 text-center bg-slate-900/50 mb-4">
+                <p class="text-xs text-slate-400 font-mono mb-2">Drag and drop high-res RAW photos or MP4 video files</p>
+                <button onclick="showToast('Upload Staged', 'Media verified and staged successfully.'); closeLayerModal('upload');" class="bg-cyanNeon text-black font-extrabold text-xs px-5 py-2.5 rounded-lg font-mono uppercase">Browse Files</button>
+            </div>
+            <button onclick="closeLayerModal('upload')" class="w-full bg-slate-900 text-slate-300 py-2.5 rounded-xl text-xs font-bold uppercase font-mono">Cancel</button>
+        </div>
+    </div>
+
+    <div id="layerSettings" class="fixed inset-0 bg-black/85 backdrop-blur-md z-[110] hidden flex items-center justify-center p-4">
+        <div class="bg-slate-950 border border-slate-800 rounded-2xl w-full max-w-lg p-6 relative shadow-2xl">
+            <button onclick="closeLayerModal('settings')" class="absolute top-4 right-4 text-slate-400 hover:text-white font-mono text-sm">✕</button>
+            <h3 class="text-sm font-black tracking-wider text-white mb-4">// ACCOUNT & CREATOR SETTINGS</h3>
+            <p class="text-xs text-slate-400 font-mono mb-6">Manage connected OAuth accounts, session tokens, and security configurations.</p>
+            <div class="space-y-3 mb-6 font-mono text-xs">
+                <label class="flex items-center justify-between bg-slate-900 p-3 rounded-xl border border-slate-850">
+                    <span class="text-slate-300">Email Notifications</span>
+                    <input type="checkbox" checked class="accent-cyanNeon">
+                </label>
+                <label class="flex items-center justify-between bg-slate-900 p-3 rounded-xl border border-slate-850">
+                    <span class="text-slate-300">Public Creator Vault Visibility</span>
+                    <input type="checkbox" checked class="accent-cyanNeon">
+                </label>
+            </div>
+            <button onclick="showToast('Settings Saved', 'Account configurations updated.'); closeLayerModal('settings');" class="w-full bg-cyanNeon text-black font-extrabold text-xs py-3 rounded-xl uppercase font-mono tracking-wider">Save Changes</button>
+        </div>
     </div>
 
     <script>
-        const dictionary = {
-            EN: {
-                bio: "Official digital hub & creative vault. Tap below to access verified platforms.",
-                tg: "🔥 Telegram Vault",
-                lt: "🔗 Linktree Hub",
-                x: "✖ X (Twitter)",
-                bs: "🦋 Bluesky Profile",
-                fb: "📘 Facebook Page"
-            },
-            RU: {
-                bio: "Официальный цифровой хаб и творческий архив. Переходите на проверенные платформы ниже.",
-                tg: "🔥 Telegram Канал",
-                lt: "🔗 Linktree Хаб",
-                x: "✖ X (Твиттер)",
-                bs: "🦋 Bluesky Профиль",
-                fb: "📘 Страница Facebook"
-            },
-            AR: {
-                bio: "المنصة الرقمية الرسمية والأرشيف الإبداعي. اضغط أدناه للوصول إلى المنصات المعتمدة.",
-                tg: "🔥 قناة تيليجرام",
-                lt: "🔗 بوابة Linktree",
-                x: "✖ منصة X",
-                bs: "🦋 حساب Bluesky",
-                fb: "📘 صفحة فيسبوك"
-            },
-            KO: {
-                bio: "공식 디지털 허브 및 크리에이티브 볼트. 아래 플랫폼에서 확인하세요.",
-                tg: "🔥 텔레그램 볼트",
-                lt: "🔗 링크트리 허브",
-                x: "✖ X (트위터)",
-                bs: "🦋 블루스카이 프로필",
-                fb: "📘 페이스북 페이지"
-            }
-        };
-
-        function switchLanguage(lang) {
-            const t = dictionary[lang];
-            if (!t) return;
-
-            document.getElementById('mainBio').textContent = t.bio;
-            document.querySelector('[data-i18n-key="tg"]').textContent = t.tg;
-            document.querySelector('[data-i18n-key="lt"]').textContent = t.lt;
-            document.querySelector('[data-i18n-key="x"]').textContent = t.x;
-            document.querySelector('[data-i18n-key="bs"]').textContent = t.bs;
-            document.querySelector('[data-i18n-key="fb"]').textContent = t.fb;
+        function openSideDrawer() {
+            document.getElementById('sideDrawer').classList.remove('-translate-x-full');
+            document.getElementById('sideDrawerOverlay').classList.remove('hidden');
         }
+
+        function closeSideDrawer() {
+            document.getElementById('sideDrawer').classList.add('-translate-x-full');
+            document.getElementById('sideDrawerOverlay').classList.add('hidden');
+        }
+
+        function openLayerModal(layerName) {
+            // Close all layers first
+            ['auth', 'profile', 'vault', 'upload', 'settings'].forEach(l => {
+                document.getElementById('layer' + capitalize(l)).classList.add('hidden');
+            });
+            // Open target layer
+            const target = document.getElementById('layer' + capitalize(layerName));
+            if (target) {
+                target.classList.remove('hidden');
+            }
+        }
+
+        function closeLayerModal(layerName) {
+            const target = document.getElementById('layer' + capitalize(layerName));
+            if (target) {
+                target.classList.add('hidden');
+            }
+        }
+
+        function capitalize(s) {
+            return s.charAt(0).toUpperCase() + s.slice(1);
+        }
+
+        function switchMainView(view) {
+            showToast('Navigation', `Switched active view to ${view}`);
+        }
+
+        function changeLanguage(lang) {
+            showToast('Language Updated', `Switched active locale to ${lang}`);
+        }
+
+        function instantMemberLogin() {
+            closeLayerModal('auth');
+            showToast('Verified', 'Instant Member Access granted successfully.');
+            document.getElementById('authTriggerBtn').innerHTML = '<span class="text-cyanNeon font-mono text-xs font-bold border neon-border-cyan px-3 py-2 rounded-lg bg-cyan-500/10">✓ INSIDER ACTIVE</span>';
+            document.getElementById('drawerAuthSection').innerHTML = '<div class="text-cyanNeon font-mono text-xs font-bold p-2 bg-slate-900 rounded border neon-border-cyan">✓ CREATOR LOGGED IN</div>';
+        }
+
+        function handleOAuth(provider) {
+            closeLayerModal('auth');
+            showToast('OAuth Gateway', `Connecting to ${provider} secure auth server...`);
+            setTimeout(() => {
+                instantMemberLogin();
+            }, 800);
+        }
+
+        function handleSearch(e) {
+            e.preventDefault();
+            const query = document.getElementById('topSearchBar').value;
+            if (query) {
+                showToast('Search Query', `Filtering archives for: ${query}`);
+                appendTerminalLine(`root@search:~$ query executed for "${query}" -> 14 results found.`);
+            }
+        }
+
+        function sharePortalLink() {
+            navigator.clipboard?.writeText(window.location.href);
+            showToast('Clipboard', 'Portal URL copied to clipboard.');
+        }
+
+        // Terminal CLI Engine
+        function handleTerminalSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('terminalInputBox');
+            const cmd = input.value.trim().toLowerCase();
+            if (cmd) {
+                runCommand(cmd);
+                input.value = '';
+            }
+        }
+
+        function runCommand(cmd) {
+            const output = document.getElementById('terminalOutput');
+            const pUser = document.createElement('p');
+            pUser.className = 'text-white';
+            pUser.textContent = `root@zailvexonated:~$ ${cmd}`;
+            output.appendChild(pUser);
+
+            const pRes = document.createElement('p');
+            pRes.className = 'text-slate-300 font-mono text-xs leading-relaxed';
+
+            switch(cmd) {
+                case 'explore':
+                    pRes.innerHTML = `<span class="text-cyanNeon">EXPLORE:</span> Scanning historical domain networks... Symbolics.com (1985) was the 6th registered .com domain on the ARPANET.`;
+                    break;
+                case 'timeline':
+                    pRes.innerHTML = `<span class="text-cyanNeon">TIMELINE:</span> 1983: DNS Created -> 1985: symbolics.com registered -> 2026: ZaiLVEXONATED Cyber-Terminal launched.`;
+                    break;
+                case 'domains':
+                    pRes.innerHTML = `<span class="text-greenNeon">DOMAINS:</span> 1. symbolics.com | 2. bbn.com | 3. mit.network | 4. zailvexonated.studio`;
+                    break;
+                case 'random':
+                    pRes.innerHTML = `<span class="text-amberNeon">RANDOM FACT:</span> The original Symbolics headquarters was located in Cambridge, Massachusetts, pioneering Lisp machine workstations.`;
+                    break;
+                case 'vault':
+                    pRes.innerHTML = `<span class="text-cyanNeon">VAULT:</span> Opening Creator Vault layer...`;
+                    openLayerModal('vault');
+                    break;
+                case 'upload':
+                    pRes.innerHTML = `<span class="text-cyanNeon">UPLOAD:</span> Launching media studio layer...`;
+                    openLayerModal('upload');
+                    break;
+                case 'profile':
+                    pRes.innerHTML = `<span class="text-cyanNeon">PROFILE:</span> Loading creator credentials...`;
+                    openLayerModal('profile');
+                    break;
+                case 'help':
+                    pRes.innerHTML = `Available commands: <span class="text-cyanNeon">explore, timeline, domains, random, vault, upload, profile, clear</span>`;
+                    break;
+                case 'clear':
+                    output.innerHTML = '';
+                    return;
+                default:
+                    pRes.innerHTML = `<span class="text-red-400">Command not recognized: "${cmd}". Type "help" for a list of commands.</span>`;
+            }
+
+            output.appendChild(pRes);
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function appendTerminalLine(text) {
+            const output = document.getElementById('terminalOutput');
+            const p = document.createElement('p');
+            p.className = 'text-greenNeon';
+            p.textContent = text;
+            output.appendChild(p);
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function triggerDailyChallengeFact() {
+            showToast('Daily Challenge', 'New internet history milestone loaded into terminal.');
+            runCommand('explore');
+        }
+
+        function showToast(title, message) {
+            const banner = document.getElementById('toastBanner');
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastMessage').textContent = message;
+            banner.classList.remove('hidden');
+            setTimeout(() => {
+                banner.classList.add('hidden');
+            }, 3500);
+        }
+
+        function closeToast() {
+            document.getElementById('toastBanner').classList.add('hidden');
+        }
+
+        // Global Bindings
+        window.openSideDrawer = openSideDrawer;
+        window.closeSideDrawer = closeSideDrawer;
+        window.openLayerModal = openLayerModal;
+        window.closeLayerModal = closeLayerModal;
+        window.switchMainView = switchMainView;
+        window.changeLanguage = changeLanguage;
+        window.instantMemberLogin = instantMemberLogin;
+        window.handleOAuth = handleOAuth;
+        window.handleSearch = handleSearch;
+        window.sharePortalLink = sharePortalLink;
+        window.handleTerminalSubmit = handleTerminalSubmit;
+        window.runCommand = runCommand;
+        window.triggerDailyChallengeFact = triggerDailyChallengeFact;
+        window.showToast = showToast;
+        window.closeToast = closeToast;
     </script>
 </body>
 </html>
