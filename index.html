@@ -174,7 +174,6 @@
                 </div>
             </div>
         </header>
-
         <!-- Main Banner & Content -->
         <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full flex-grow">
             <div class="max-w-3xl mb-10">
@@ -196,6 +195,96 @@
                 </div>
             </div>
         </main>
+        <script>
+    // --- SIDE DRAWER LOGIC ---
+    function openSideDrawer() {
+        const drawer = document.getElementById('sideDrawer');
+        const overlay = document.getElementById('sideDrawerOverlay');
+        if (drawer && overlay) {
+            drawer.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+        }
+    }
+
+    function closeSideDrawer() {
+        const drawer = document.getElementById('sideDrawer');
+        const overlay = document.getElementById('sideDrawerOverlay');
+        if (drawer && overlay) {
+            drawer.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        }
+    }
+
+    // --- TOAST NOTIFICATION LOGIC ---
+    function showToast(title, message, type = 'success') {
+        const banner = document.getElementById('toastBanner');
+        const titleEl = document.getElementById('toastTitle');
+        const msgEl = document.getElementById('toastMessage');
+        
+        if (banner && titleEl && msgEl) {
+            titleEl.textContent = title;
+            msgEl.textContent = message;
+            banner.classList.remove('hidden');
+            
+            // Auto hide after 4 seconds
+            setTimeout(() => {
+                closeToast();
+            }, 4000);
+        }
+    }
+
+    function closeToast() {
+        const banner = document.getElementById('toastBanner');
+        if (banner) {
+            banner.classList.add('hidden');
+        }
+    }
+
+    // --- MODAL / SECTION TRIGGERS ---
+    function openUserProfileModal() {
+        showToast('CREATOR PROFILE', 'Loading ZaiLVEXONATED creator profile view...', 'info');
+    }
+
+    function openUploadModal() {
+        showToast('UPLOAD PORTAL', 'Media upload ready. Connect your asset files.', 'info');
+    }
+
+    function openAccountSettingsModal() {
+        showToast('SETTINGS', 'Opening secure configuration panel...', 'info');
+    }
+
+    function openAuthModal() {
+        showToast('PORTAL ACCESS', 'Login / Sign up gateway activated.', 'info');
+    }
+
+    function showSection(sectionName) {
+        showToast('NAVIGATION', `Switching active view to: ${sectionName.toUpperCase()}`, 'info');
+    }
+
+    // --- SEARCH BAR LOGIC ---
+    function handleSearch(event) {
+        event.preventDefault();
+        const queryInput = document.getElementById('topSearchBar');
+        if (queryInput && queryInput.value.trim() !== "") {
+            showToast('SEARCH ENGINE', `Query submitted: "${queryInput.value}"`, 'success');
+            queryInput.value = ""; // clear after search
+        } else {
+            showToast('SEARCH WARNING', 'Please enter a keyword or tag to search.', 'warning');
+        }
+    }
+
+    // --- LANGUAGE SWITCHING LOGIC ---
+    function changeLanguage(langCode) {
+        // Sync both dropdowns if changed
+        const headerSelect = document.getElementById('headerLangSelect');
+        const drawerSelect = document.getElementById('drawerLangSelect');
+        
+        if (headerSelect) headerSelect.value = langCode;
+        if (drawerSelect) drawerSelect.value = langCode;
+
+        showToast('LOCALIZATION', `Language successfully switched to [ ${langCode} ]`, 'success');
+    }
+</script>
     </div>
 </body>
 </html>
